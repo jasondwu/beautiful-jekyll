@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"></link>
+    <script src="libs/exploratory/resources/jquery.min.js?cb=cb1566986604676"></script>
+    <script src="libs/exploratory/resources/d3.min.js?cb=cb1566986604676"></script>
+    <script src="libs/exploratory/resources/viz.min.js?cb=cb1566986604676"></script>
+    <script src="libs/exploratory/resources/plotly.min.js?cb=cb1566986604676"></script>
+    <style  type="text/css">
+      /* plotly exploratory extension */
+      .js-plotly-plot .plotly .legendpoints  .pointtext  text {
+        visibility: hidden!important;
+      }
+      /**
+       * Workaround to make the circles in the legend in even size. 
+       * https://community.plot.ly/t/controlling-legend-circle-size-in-bubble-plot/3418
+       * https://stackoverflow.com/questions/40098827/r-plotly-version-4-5-2-scatterplot-legend-bubble-size-settings
+       * https://stackoverflow.com/questions/524696/how-to-create-a-style-tag-with-javascript
+       */
+      .legendpoints path.scatterpts { 
+        d: path('M 3.2 0 A 3.2 3.2 0 1 1 0 -3.2 A 3.2 3.2 0 0 1 3.2 0 Z'); 
+      }
+    
+    </style>
+    <script src="libs/exploratory/resources/leaflet.min.js?cb=cb1566986604676"></script>
+    <script src="libs/exploratory/resources/leaflet-heat.js?cb=cb1566986604676"></script>
+    <script src="libs/exploratory/resources/html2canvas.min.js?cb=cb1566986604676"></script>
+    <script src="libs/exploratory/resources/leaflet_export.js?cb=cb1566986604676"></script>
+    <link href="libs/exploratory/resources/leaflet.css?cb=cb1566986604676" rel="stylesheet"></link>
+    
+    <style  type="text/css">
+    /* leaflet exploratory extension */
+    
+    /* map legend. should be in pure css for viz share/note  */
+    .leaflet-container .info.info-box {
+      color: #555;
+      padding: 8px 8px 4px 8px;
+      border-radius: 2px;
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+    .leaflet-container .info.info-box .info-box-title{
+      font-size:12px;
+      font-weight:bold;
+      overflow:hidden;
+      margin-bottom:2px;
+    }
+    .leaflet-container .info.info-box .info-box-table{
+      display:table;
+    }
+    
+    .leaflet-container .info.info-box .info-box-value{
+      font-size:12px;
+      font-weight:normal;
+      display: table-row;
+    }
+    .leaflet-container .info.info-box .info-box-value .label-col , 
+    .leaflet-container .info.info-box .info-box-value .value-col { 
+      display: table-cell; 
+      text-align:left;
+      padding-right:5px;
+    }
+    .leaflet-container .info.info-box .info-box-value .label-col {
+      color: #999;
+    }
+    
+    .leaflet-container .info.legend {
+        color: #555;
+        padding: 8px 8px 4px 8px;
+        border-radius: 2px;
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+    .leaflet-container .legend .legend-row {
+      height:16px;
+      line-height:16px;
+    }
+    
+    .leaflet-container .legend.circle .legend-row {
+      line-height:15px;
+    }
+    
+    .leaflet-container .legend i {
+        width: 14px;
+        height: 14px;
+        float: left;
+        margin-right: 8px;
+        border-radius: 50%;
+    }
+    
+    .leaflet-container .legend.circle i {
+      opacity: 0.8;
+    }
+    .leaflet-container .legend.square i {
+      width: 16px;
+      height: 16px;
+      border-radius: 0;
+      opacity: 0.65;
+    }
+    
+    .leaflet-container .leaflet-popup-content-wrapper .popup-content-row {
+      display:table-row;
+    }
+    .leaflet-container .leaflet-popup-content-wrapper .popup-content-cell {
+      text-align:right;
+      display:table-cell;
+    }
+    
+    /* disables all the links in the map attribution area at bottom. only for desktop */
+    .leaflet-container .leaflet-control-attribution.leaflet-control a {
+      pointer-events: none;
+    }
+    </style>
+    <script src="libs/exploratory\layout\igL9WMn5_imp_1.js"></script>
+    <script src="libs/exploratory\layout\AGA9YMF4_imp_1.js"></script>
+    <script src="libs/exploratory\layout\STF1Vrd4_imp_1.js"></script>
+    <script src="libs/exploratory\layout\HsL4ewD3_imp_1.js"></script>
+    <link rel="stylesheet" href="libs\exploratory\resources\slide-base.css" type="text/css" />
+    <link rel="stylesheet" href="libs\exploratory\resources\slide-font-family-noto.css" type="text/css" />
+    <link rel="stylesheet" href="libs\exploratory\resources\slide-font-size-medium.css" type="text/css" />
+    <link rel="stylesheet" href="libs\exploratory\resources\slide-font-weight-normal.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+class: center, middle, inverse
+background-color: 
+background-image:
+
+## **My Background and Research Highlights**
+
+
+Dayong(Jason) Wu, Ph.D. , EIT&lt;br&gt;
+Texas Tech University &lt;br&gt;
+8/28/2019
+
+
+---
+# Outline
+
+* Self-introduction
+* Research Areas and Highlights
+* Future Research Plan
+
+???
+
+first page
+---
+# Who Am I?
+
+* Senior Research Associate &amp; Course Instructor               (Texas Tech Center for Multidisciplinary Research in Transportation, Texas Tech University)
+
+* Education/Working Background:
+&gt; Ph.D. in Transportation Engineering, Texas Tech University
+&gt; 
+&gt; Master in Structure Engineering, Utah State University
+&gt; 
+&gt; Bachelor in Civil Engineering, Zhengzhou University (China) 
+
+
+
+---
+# Who Am I?
+
+* 5+ years research experience in Transportation Engineering and Structural Engineering
+&gt; 18 journal papers, 10 conference presentations, 6 technical reports,
+&gt; 9 proposals (4 of them awarded, 2 pending),
+&gt; 13 research projects
+* 2+ years teaching experience in Civil / Transpiration Engineering 
+&gt;  CE 4200 (FE Exam),
+&gt; CE 4330 (Team Design),
+&gt; CE 4331/5331 (Highway safety),
+&gt; Guest lectures in Highway Capacity, Traffic Engineering, Transportation planning, GIS in Transportation, etc.
+* 3+ years working experience in consulting firms as a civil engineer
+
+
+---
+
+
+# Who Am I?
+
+* Researcher
+
+--
+
+* Teacher
+
+--
+
+* Civil/Transportation Engineer
+
+--
+
+* Data Scientist 
+
+--
+
+* GIS Developer
+
+--
+* Husbund / Father
+	
+&lt;img src="http://www.myweb.ttu.edu/dawu/presentations/DallasTTI/images/picture1.png" style="position: absolute; top: 25px; left: 600px; width: ; height: " &gt;
+
+
+
+---
+# Research Areas
+
+* Traffic Safety: Data Analytics &amp; Visualization 
+
+--
+
+* GIS in Transportation 
+
+--
+
+* Traffic Operations, Roadway Design &amp; Transportation Planning 
+
+--
+* Other Research
+
+---
+
+# Traffic Safety: Data Analytics &amp; Visualization 
+
+* TxDOT eGrant Safety Program:
+
+&gt; “Analyze teen driver crash statistics in rural Texas and incorporate it into the education program”, TxDOT, 2018-2019 (ongoing); 
+&gt; "Understanding Older Teen Drivers: Expansion of Interactive Tool with Data from College Students", TxDOT, 2016-2017;
+&gt; "Implementation of Interactive Animation Education Tool for Teenage Drivers of Rural Roads", TxDOT, 2015-2016 
+
+--
+
+* TxDOT IAC Projects:
+
+&gt; “Safety Analysis and Design &amp; Operational Strategies for Two Highway Segments in Midland-Odessa Area”, TxDOT, 2019, (ongoing); 
+&gt; "A Comprehensive Safety Analysis for Loop 250 Corridor", TxDOT, 2016-2017
+
+---
+
+
+
+
+**Rsearch Highlights: Traffic Safety Data Analytics and Visualization**
+
+
+<script data-id="viz_1" data-object-name="viz_igL9WMn5_imp_1" data-viz="igL9WMn5_imp_1" data-height="80%" data-width="100%" ></script><div data-id="viz_1" style="width:100%; height:400px; display:table;margin-bottom:38px" class="viz-rendering-error viz-loading"><div style="width:100%; height:100%; display:table-cell; vertical-align:middle; text-align:center; font-size:14px; color:#999; background-color:white;font-family:sans-serif "><div>Loading... </div></div></div>
+
+
+---
+**Rsearch Highlights: Traffic Safety Data Analytics and Visualization
+**
+<script data-id="viz_2" data-object-name="viz_AGA9YMF4_imp_1" data-viz="AGA9YMF4_imp_1" data-height="80%" data-width="100%" ></script><div data-id="viz_2" style="width:100%; height:400px; display:table;margin-bottom:38px" class="viz-rendering-error viz-loading"><div style="width:100%; height:100%; display:table-cell; vertical-align:middle; text-align:center; font-size:14px; color:#999; background-color:white;font-family:sans-serif "><div>Loading... </div></div></div>
+
+
+---
+
+**Rsearch Highlights: Traffic Safety Data Analytics and Visualization**
+
+&lt;iframe width="100%" height="80%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Rural Teen Driver Crashes Hot Spots - Lubbock" src="http://transtechlab.maps.arcgis.com/apps/Embed/index.html?webmap=1c9a02f78a8a4a1d8305c0fc8eeca65d&amp;extent=-102.1926,33.382,-101.3837,33.7733&amp;home=true&amp;zoom=true&amp;previewImage=false&amp;scale=true&amp;basemap_gallery=true&amp;disable_scroll=false&amp;theme=light"&gt;&lt;/iframe&gt;
+
+---
+**Rsearch Highlights: Traffic Safety Data Analytics and Visualization**
+
+&lt;iframe width="100%" height="80%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="eGrant Abilene-Hot Spots" src="http://transtechlab.maps.arcgis.com/apps/Embed/index.html?webmap=52563bec47124157a4748f42e68d1d21&amp;extent=-100.1768,32.0386,-98.559,32.8314&amp;home=true&amp;zoom=true&amp;previewImage=true&amp;scale=true&amp;search=true&amp;searchextent=true&amp;basemap_gallery=true&amp;disable_scroll=false&amp;theme=light"&gt;&lt;/iframe&gt;
+
+
+---
+**Rsearch Highlights: Traffic Safety Data Analytics and Visualization**
+
+&lt;iframe width="100%" height="80%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Hot_Spots Map-Midland Odessa -Dark Map" src="http://transtechlab.maps.arcgis.com/apps/Embed/index.html?webmap=d7e89c9f38ee4edd8a771ad4a4f98c3b&amp;extent=-102.608,31.7036,-101.7991,32.1023&amp;home=true&amp;zoom=true&amp;previewImage=false&amp;scale=true&amp;basemap_gallery=true&amp;disable_scroll=false&amp;theme=light"&gt;&lt;/iframe&gt;
+
+---
+
+**Rsearch Highlights: Traffic Safety Data Analytics and Visualization**
+
+.pull-top[
+
+<script data-id="viz_3" data-object-name="viz_STF1Vrd4_imp_1" data-viz="STF1Vrd4_imp_1" data-height="45%" data-width="" ></script><div data-id="viz_3" style="width:100%; height:400px; display:table;margin-bottom:38px" class="viz-rendering-error viz-loading"><div style="width:100%; height:100%; display:table-cell; vertical-align:middle; text-align:center; font-size:14px; color:#999; background-color:white;font-family:sans-serif "><div>Loading... </div></div></div>
+
+]
+
+.pull-bottom[
+
+<script data-id="viz_4" data-object-name="viz_HsL4ewD3_imp_1" data-viz="HsL4ewD3_imp_1" data-height="45%" data-width="" ></script><div data-id="viz_4" style="width:100%; height:400px; display:table;margin-bottom:38px" class="viz-rendering-error viz-loading"><div style="width:100%; height:100%; display:table-cell; vertical-align:middle; text-align:center; font-size:14px; color:#999; background-color:white;font-family:sans-serif "><div>Loading... </div></div></div>
+
+]
+
+---
+**Rsearch Highlights: Traffic Safety Data Analytics and Visualization**
+
+* Paper 1: Exploring Associations Between the Factors Contributing to Teen Driver Crashes on Rural Roads by Multiple Correspondence Analysis: Using West Texas Data as Example 
+
+
+&gt; &lt;div id="" style="background-color:#EEEEEE"&gt;
+This paper  presents a non-parametric multiple correspondence analysis (MCA) study, in which nine years crash data between 2010-2018 with teen driver involvements on rural roads of selected West Texas counties were
+analyzed. The results indicate that 
+failure to yield at on-ramps of interstate
+highways, 
+failure to control speed at intersections of U.S. and State Highways, 
+unsafe speed at curved roadway sections, failure to yield on the undivided roads with four or more lanes, 
+and crash to animals on two-lane roads are among the top causes of teen driver crashes on rural roads in West Texas.&lt;/div&gt;
+
+
+
+---
+* Paper 2: Factor Identification and Prediction for Teen Driver Crash Severity in West Texas Rural Areas: A Complete Machine Learning Approach
+
+&gt; &lt;div id="" style="background-color:#EEEEEE"&gt; This study presents a
+complete machine leaning pipeline to find the patterns of crashes involved with teen
+drivers no older than 20 on rural roads in west Texas, identify factors that affect injury
+levels, and build four machine learning predictive models on crash severity. &lt;br&gt;
+	The
+analysis indicates road class, speed
+limit, and the first harmful event are the top three factors affecting crash severity. The
+predictive machine learning model based on Label Encoder and XGBoost seems the
+best option when considering both accuracy and computational cost.
+&lt;/div&gt;
+
+--
+
+* Paper 3: Tempo-Spatial patterns of rural teen driver crashes in west Texas (developing)
+
+
+---
+**Rsearch Highlights: Traffic Safety Data Analytics and Visualization**
+
+&lt;br&gt;
+
+![](libs/exploratory/images/p1.JPG)
+
+
+
+---
+# GIS in Transportation
+
+* UTC Projects
+
+&gt; A GIS-Based Routing Assistance Tool to Reduce Pavement Damage by Overweight and Oversize Vehicles (SPTC, 2014-2016)
+
+&gt; Towards an Open-source Web GIS-based Bridge Management System Using Advanced Geo-Spatial Data Visualization and Integration Technologies (SPTC, 2017-2018)
+
+* IAC Projects
+
+&gt; A Comprehensive Safety Analysis for Loop 250 Corridor: web-GIS based Safety Data Management Platform &amp; Geospatical Crash Reporting Mobile App (TxDOT, 2016-2017)
+
+
+---
+# GIS in Transportation
+
+&lt;iframe width="100%" height="80%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Midland Safety Tool" src="http://www.depts.ttu.edu/transtech/SPTC/SPTC.html"&gt;&lt;/iframe&gt;
+
+
+
+---
+# GIS in Transportation
+
+
+&lt;video width="100%" height="80%" controls&gt;
+    &lt;source src="http://jasondwu.github.io/videos/SPTCOSOW.mp4" type="video/mp4"&gt;
+&lt;/video&gt;
+
+
+---
+# GIS in Transportation
+
+
+&lt;iframe width="100%" height="80%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Midland Safety Tool" src="http://www.depts.ttu.edu/transtech/Midland/Midland.html"&gt;&lt;/iframe&gt;
+
+
+
+---
+# GIS in Transportation
+
+
+&lt;video width="100%" height="80%" controls&gt;
+    &lt;source src="http://myweb.ttu.edu/dawu/presentations/DallasTTI/videos/CrashManagement.mp4" type="video/mp4"&gt;
+&lt;/video&gt;
+
+
+
+---
+# GIS in Transportation
+
+
+&lt;iframe width="100%" height="80%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Midland Safety Tool" src="http://transtechlab.maps.arcgis.com/apps/webappviewer3d/index.html?id=6d38399bd5a64f48af63cfdba4e8b63d"&gt;&lt;/iframe&gt;
+
+---
+## Traffic Operations &amp; Transportation Planning 
+* "Traffic Modeling of the interchange of State Loop 289, US 84 &amp; Martin Luther King JR Blvd. in Lubbock, Texas", TxDOT IAC, 2019-2020, (Ongoing)
+
+* “Evaluate and Prepare a Level of Service Analysis on the I-20 Frontage Roads within the city limits of Sweetwater, Texas”, TxDOT, 2018-2019, (Ongoing)
+
+* "Analysis of Game Day Traffic Patterns for Jones AT&amp;T Stadium in Lubbock, Texas", TxDOT IAC, 2014-2015 
+
+* "Sate Loop 250 Corridor Study in Midland, TX- Phase II: Interchanges and Frontage Roads", TxDOT IAC, 2014-2015
+
+---
+# Traffic Operations &amp; Transportation Planning 
+
+&lt;video width="650px" height="500px" controls &gt;
+    &lt;source src="http://myweb.ttu.edu/dawu/presentations/DallasTTI/videos/SweetwaterBefore.mp4" type="video/mp4"&gt;
+&lt;/video&gt;
+
+&lt;div style="background-color:#EEEEEE; position: absolute; top: 150px; left: 800px; width: ; height:" &gt;
+	
+&lt;b&gt;Sweetwater I-20 &amp; SH-70 Traffic Capacity Analysis Project &lt;/b&gt; &lt;br&gt;
+	
+In this project, we studied the coversion of two-way frontage road into one-way frontage road throughout the I-20 corridor within the city limits of Sweetwater. We also performed a level of service analysis for the intersection of SH-70 and I-20.  
+&lt;/div&gt;
+
+
+---
+# Traffic Operations &amp; Transportation Planning
+
+&lt;video width="650px" height="500px" controls&gt;
+    &lt;source src="http://myweb.ttu.edu/dawu/presentations/DallasTTI/videos/SweetwaterAfter.mp4" type="video/mp4"&gt;
+&lt;/video&gt;
+
+&lt;div style="background-color:#EEEEEE; position: absolute; top: 150px; left: 800px; width: ; height:" &gt;
+	
+&lt;b&gt;Sweetwater I-20 &amp; SH-70 Traffic Capacity Analysis Project &lt;/b&gt; &lt;br&gt;
+	
+In this project, we studied the coversion of two-way frontage road into one-way frontage road throughout the I-20 corridor within the city limits of Sweetwater. We also performed a level of service analysis for the intersection of SH-70 and I-20.  
+&lt;/div&gt;
+
+
+
+---
+# Traffic Operations &amp; Transportation Planning
+
+
+![](libs/exploratory/images/p2.PNG)
+
+
+
+---
+# Traffic Operations &amp; Transportation Planning
+
+![](libs/exploratory/images/p3.PNG)
+
+---
+# Traffic Operations &amp; Transportation Planning
+
+&lt;video width="650px" height="500px" controls&gt;
+    &lt;source src="http://myweb.ttu.edu/dawu/presentations/DallasTTI/videos/LubbockBefore.mp4" type="video/mp4"&gt;
+&lt;/video&gt;
+
+&lt;div style="background-color:#EEEEEE; position: absolute; top: 150px; left: 800px; width: ; height:" &gt;
+	
+&lt;b&gt;Lubbock Traffic Modeling Project Phase I &lt;/b&gt; &lt;br&gt;
+
+In this project, we will make traffic simulation models for the interchanges of SL 289, US 84 &amp; Martin Luther King, JR. Blvd. The proposed reconfiguration includes two levels: a round-a-bout with 10 legs at the ground level and SL 289 and US 84 at the second level. We will estimate traffic volume on roundabout and traffic distribution at the entire facility.
+
+
+&lt;/div&gt;
+
+
+
+---
+# Traffic Operations &amp; Transportation Planning
+
+&lt;video width="650px" height="500px" controls&gt;
+    &lt;source src="http://myweb.ttu.edu/dawu/presentations/DallasTTI/videos/LubbockAfter.mp4" type="video/mp4"&gt;
+&lt;/video&gt;
+
+&lt;div style="background-color:#EEEEEE; position: absolute; top: 150px; left: 800px; width: ; height:" &gt;
+	
+&lt;b&gt;Lubbock Traffic Modeling Project Phase I &lt;/b&gt; &lt;br&gt;
+
+In this project, we will make traffic simulation models for the interchanges of SL 289, US 84 &amp; Martin Luther King, JR. Blvd. The proposed reconfiguration includes two levels: a round-a-bout with 10 legs at the ground level and SL 289 and US 84 at the second level. We will estimate traffic volume on roundabout and traffic distribution at the entire facility.
+
+&lt;/div&gt;
+
+
+---
+# Traffic Operations &amp; Transportation Planning
+
+&lt;video width="650px" height="500px" controls&gt;
+    &lt;source src="http://myweb.ttu.edu/dawu/presentations/DallasTTI/videos/LubbockAfter3D.mp4" type="video/mp4"&gt;
+&lt;/video&gt;
+
+&lt;div style="background-color:#EEEEEE; position: absolute; top: 150px; left: 800px; width: ; height:" &gt;
+	
+&lt;b&gt;Lubbock Traffic Modeling Project Phase I &lt;/b&gt; &lt;br&gt;
+
+In this project, we will make traffic simulation models for the interchanges of SL 289, US 84 &amp; Martin Luther King, JR. Blvd. The proposed reconfiguration includes two levels: a round-a-bout with 10 legs at the ground level and SL 289 and US 84 at the second level. We will estimate traffic volume on roundabout and traffic distribution at the entire facility.
+
+&lt;/div&gt;
+
+
+
+---
+# Traffic Operations &amp; Transportation Planning
+
+
+![](libs/exploratory/images/p4.PNG)
+
+
+---
+# Other Research
+
+&lt;iframe width="100%" height="80%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Traffic Crash Animated HeatMap " src="http://myweb.ttu.edu/dawu/Fortworth.html"&gt;&lt;/iframe&gt;
+
+
+---
+# Other Research
+
+&lt;div style="background-color:#EEEEEE; position: absolute; top: 150px; left: 855px; width: ; height:" &gt;
+	
+Paper: Highway Traffic State Estimation using Gaussian Process Regression with Heuristic Covariance Functions (under review)
+&lt;/div&gt;
+
+
+![](libs/exploratory/images/p5.jpg)
+
+---
+# Other Research
+
+&lt;video width="650px" height="500px" controls&gt;
+    &lt;source src="http://myweb.ttu.edu/dawu/presentations/DallasTTI/videos/LiDARStudy.mp4" type="video/mp4"&gt;
+&lt;/video&gt;
+
+
+&lt;div style="background-color:#EEEEEE; position: absolute; top: 150px; left: 800px; width: ; height:" &gt;
+	
+Paper: Detection and tracking of pedestrians and vehicles using roadside LiDAR sensors (Transportation Research Part C)
+
+&lt;/div&gt;
+---
+
+
+# Future Research Plan
+
+* Develop a web GIS based Decision Support Tool for Rural Roadway Safety Improvements
+
+* Develop a web GIS based teen driver crash risk road assessment tool  (Data visualization and risk assessment)
+
+* Virtual Reality or Augmented Reality based teen driver safety education program
+
+* Enhancement of the current GIS applications ( e.g., Pavement and Signage Asset Management System)
+
+
+---
+# Future Research Plan
+
+* Development of IAC contracts with TxDOT local agencies
+
+* Revisiting car-following theories for mixed traffic conditions with autonomous and connected vehicles 
+
+* Development of real-time cooperative pedestrian and bicyclists situational awareness system using infrastructure-based LiDAR technology 
+
+---
+class: center, middle, inverse
+background-color: 
+background-image:
+
+## **Thank you &amp; Any Questions?**
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="libs/exploratory/resources/remark.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightLanguage": "r",
+"ratio": "16:9",
+"navigation": {
+"scroll": false,
+"click": false,
+"touch": false
+}
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+<!-- BEGIN: Exploratory custom footer -->
+
+<script>
+
+var FULL_WIDTH_MARGIN_LEFT = 60;
+var $body = $(document.body);
+var bodyWidth = $body.width();
+// The default body max-width is set to 782px so if it is less than 902px 
+// (782 + 60 left margin + 60 right margin) we cancel stretching images. 
+$('img[width="full"]').each(function() {
+  var $elem = $(this);
+  if (bodyWidth > 902) {
+    $elem.attr("width", "");  // remove "full"
+    var elemOffsetLeft = $elem.offset().left;
+    $elem.css({"width": (bodyWidth - (FULL_WIDTH_MARGIN_LEFT*2) )+'px', "max-width": (bodyWidth - (FULL_WIDTH_MARGIN_LEFT*2) )+'px', "margin-left": (-1 *(elemOffsetLeft - FULL_WIDTH_MARGIN_LEFT)) + "px" });
+  } else {
+    $elem.attr("width", "100%"); // replace "full" with "100%"
+  }
+});
+
+$('a').each(function(index, a){
+  var $link = $(this);
+  if($link.attr('href') && !$link.attr('href').startsWith('file')){// tab has a with href="file" so exclude tab
+    $link.attr('target','_blank'); // make sure link opens another tab or window.
+  }
+});
+
+
+</script>
+
+<script>
+
+
+// Find exploratory vizs
+var $vizs = $("script[data-id]");
+
+var _generateSnapshot = function() {
+  var $elem = $(this); // this <a> tag
+  var id = $elem.attr("data-id").replace(/^a\-/, "");
+  var objectName = $elem.attr("data-object-name");
+  var analyticsName = null;
+
+  var viz = window[objectName];
+  if (!window._datauris) 
+    window._datauris = {};
+      
+  // If it is analytics, find the viz metadata in analytics json.
+  if (/^analytics_/.test(id)) {
+    var vizName = $elem.attr("data-viz");
+    // If no corresponding metadata found, just return. 
+    if (!viz.vizs[vizName]) {
+      return;
+    }
+    analyticsName = viz.name;
+    viz = viz.vizs[vizName].metadata;
+  }
+  
+  if (VizUtil.isPivot(viz.options.marker)) {
+      // do nothing.
+  } else if (VizUtil.isLeaflet(viz.options.marker)) {
+    var map = window._leaflet_map_objs[id];
+    var options = {
+      exclude: ['.leaflet-control-zoom', '.leaflet-control-attribution', '.info-box'],
+      format: 'image/png'
+    };
+    return map.export(options)
+    .then(function(res) {
+      window._datauris[id] = res ? res.data : "null";
+      return null;
+    })
+    .catch(function(e){
+      window._datauris[id] = "null";
+    });
+  } else if (VizUtil.isROutput(viz.options.marker)) {
+  } else if (VizUtil.isPlotly(viz.options.marker)) {
+    // plotly
+    var graphDiv = document.querySelector('div[data-id="div-'+id+'"] .js-plotly-plot');
+    var origw = graphDiv.clientWidth;
+    var origh = graphDiv.scrollHeight;
+    var width = 1200; 
+    var height = graphDiv.scrollHeight > graphDiv.clientHeight ? width * origh / origw : 800;
+    return Plotly.toImage(graphDiv,  {format: "png", width: width, height: height})
+    .then(function(res){
+      window._datauris[id] = !!res ? res : "null";
+    }) 
+    .catch(function(e){
+      window._datauris[id] = "null";
+    });
+  }
+};
+
+var _processViz = function() {
+  
+  var $elem = $(this); // This script tag
+  var id = $elem.attr("data-id");
+  var objectName = $elem.attr("data-object-name");
+  // Hide loading placeholer
+  // It could match multiple elements if there are same charts.
+  $('.viz-loading[data-id="'+id+'"]').hide();
+  // Backward compatibility. The rmarkdown renders the old cached data if available.
+  $('.viz-rendering-error[id="loading-'+id+'"]').hide();
+
+  var viz = window[objectName];
+  var vizName = $elem.attr("data-viz");
+  var analyticsName = null;
+
+  // If it is analytics, find the viz metadata in analytics json.
+  if (/^analytics_/.test(id)) {
+    if (viz.vizs[vizName]) {
+      analyticsName = viz.name;
+      viz = VizUtil.analyticify(viz.vizs[vizName].metadata);
+    } else {
+      // If no metadata found, just set viz to null. 
+      // Usually it shouldn't happen but just in case it happens. #9689
+      viz = null;
+    }
+  }
+
+  // Check the available area size for viz.
+  var availableHeight = 500;  // Default - it never be used but just in case.
+  var availableWidth = 740;   // Default - it never be used but just in case.
+  var $tmp = $elem;
+  // As for the height, get the available height of the nearest parent 
+  // but it should avoid the height less than 200. It maybe the nearest p tag
+  // that we don't want to pick for the height. 
+  while($tmp) {
+    if ($tmp.height()>200) {
+      availableHeight= $tmp.height();
+      break;
+    }
+    $tmp = $tmp.parent();
+  }
+  // For the width, get the available width of the nearest parent. 
+  // If the chart is directly on the slide, it will be the slide's width. 
+  // If the chart is inside the layout column, it will be the column's width.
+  $tmp = $elem;
+  while($tmp) {
+    if ($tmp.width()>0) {
+      availableWidth = $tmp.width();
+      break;
+    }
+    $tmp = $tmp.parent();
+  }
+
+  var defaultHeight = $elem.attr("data-height");
+  var defaultWidth =  $elem.attr("data-width");
+  if (defaultHeight==="full") { defaultHeight = "100%"; }
+  if (defaultWidth ==="full") { defaultWidth  = "100%"; }
+  // Validate values. If the value is invalid, use the default value. 
+  // Valid value examples are '300' (implies 300px), '300px' (number with 'px'), or '80%' (number with '%'). 
+  if ( !defaultHeight|| !/^[\d]+(%|px|)$/.test(defaultHeight)) { defaultHeight = "70%"; } // Default: 70%
+  if ( !defaultWidth || !/^[\d]+(%|px|)$/.test(defaultWidth))  { defaultWidth = "100%"; } // Default: 100%
+
+  var height = availableHeight;
+  var width = availableWidth; 
+
+  if (defaultHeight && /^[\d]+%$/.test(defaultHeight)) {
+    height = height * parseInt(defaultHeight.replace('%','')) / 100; 
+  } else {
+    height = parseInt(defaultHeight.replace('px', '')); // set the user defined height
+  }
+
+  if (defaultWidth && /^[\d]+%$/.test(defaultWidth)) {
+    width = width * parseInt(defaultWidth.replace('%','')) / 100; 
+  } else {
+    width = parseInt(defaultWidth.replace('px', '')); // set the user defined width
+  }
+
+  // Insert a viz canvas div right after the script tag.
+  var $div = $("<div>").attr('data-id','div-'+id).css({"height":height+"px", "width": width+"px"}).addClass("viz-container markdown-viz-container")   
+  $elem.after($div);
+  
+  // If viz is not available, render no data and exit. 
+  if (!viz) {
+    VizUtil.renderNoData($div[0], "No chart data found: "+vizName);
+    // Mark it as rendered.
+    window._vizRenderingStatus[id] = true;  
+    return;
+  }
+  
+  // Add a border to table/pivot
+  if ( /^(table|pivot)$/.test(viz.options.marker)) {
+    $div.css({"border-radius":"3px", "border":"1px solid rgb(204,204,204)", "padding":"0px 0px 0px 4px"});
+  }
+
+  var $trigger = $("<a>").attr({'data-id':'a-'+id, 'data-viz':vizName, 'data-object-name':objectName}).addClass("viz-snapshot-trigger").click(_generateSnapshot);
+
+  $elem.after($trigger);   
+
+  // Figure out the canvas div width and height.
+  width = $div.width() || width; 
+  height = $div.height() || height;
+
+  // Set the width and height explicitly not to expand. 
+  $div.css({'height': height+'px'});
+  $div.css({'width': width+'px'});
+
+  // in case of facet, make the viz width a bit smaller for the vert scroll bar. 
+  viz.options.width = (!viz.options.facet ? width : width-20);
+  viz.options.height= height;
+
+  // Show no data message if data is empty. 
+  // Some chart can render its own no data message so bypass for those cases. 
+  if (VizUtil.shouldRenderNoData(viz.options.data, viz.options)) {
+    VizUtil.renderNoData($div[0]);
+    // Mark it as rendered.
+    window._vizRenderingStatus[id] = true;
+    return;
+  }
+
+  if (VizUtil.isPivot(viz.options.marker)) {
+    // Render pivot table
+    PivotTableGenerator.render(viz.options, viz.options.data, $div[0]);
+    // adjust height 
+    var pTitleHeight = $div.find('.pivot-title').outerHeight(true); 
+    if ($div.find('.pivot-title').hasClass("hidden")) {
+      pTitleHeight = 0;
+    }
+    var pColTitleHeight = $div.find('.pivot-col-title').outerHeight(true);
+    if ($div.find('.pivot-col-title').hasClass("hidden")) {
+      pColTitleHeight = 0;
+    }
+    var pHeaderHeight = $div.find('.pivot-table-frame.pivot-table-col-header-frame').outerHeight();
+    var pBodyHeight = $div.find('.pivot-table-frame.pivot-table-body-frame').outerHeight();
+    var horizScrollBarHeight = 18;
+    var pHeight = pTitleHeight + pColTitleHeight + pHeaderHeight + pBodyHeight + horizScrollBarHeight;
+    //console.log(pTitleHeight + " " +pColTitleHeight + " " + pHeaderHeight + " " + pBodyHeight + " " + pHeight + " " + $div.height())
+    if (viz.options.marker==="singlevalue"){
+      $div.css({'height':'120px', 'min-height':'120px'});
+    } else if (pHeight < $div.height()) {
+      $div.css({"height": (pHeight)+'px', "min-height":""});
+    }
+
+  } else if (VizUtil.isLeaflet(viz.options.marker)) {
+    // Render leaflet map
+    switch (viz.options.marker) {
+      case 'map':
+      case 'maphmap':
+        $div.parent().parent().css({"background-color":"#fff"});
+        MapGenerator.render(viz.options, viz.options.data, $div[0]);
+        break;
+      case 'geojson':
+        $div.parent().parent().css({"background-color":"#fff"});
+        var geojsonObjectName = 'geojson_' + viz.options.geojson; 
+        MapGenerator.render(viz.options, viz.options.data, $div[0], window[geojsonObjectName]);
+        break;
+      default:
+        break;
+    }
+  } else if (VizUtil.isROutput(viz.options.marker)) {
+    // Render R output
+    ROutputGenerator.render(viz.options, {"outputFile": [ "libs/exploratory/layout_output/"+ (analyticsName ? analyticsName+"-" : "") + viz.name+".png"]}, $div[0], true);
+  } else if (VizUtil.isPlotly(viz.options.marker)) {
+    // Render plotly graph
+    $div.css({"overflow-y":"auto"});
+    PlotlyGraphGenerator.render(viz.options, viz.options.data, $div[0], true);
+  }
+
+  // Mark it as rendered.
+  window._vizRenderingStatus[id] = true;
+}
+
+// Track the viz rendering status. 
+window._vizRenderingStatus = {};
+
+$vizs.each(function(index) {
+  window._vizRenderingStatus[$(this).attr("data-id")] = false;
+  setTimeout(_processViz.bind(this) ,50);
+});
+
+</script>
+<!-- END: Exploratory custom footer -->
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+  </body>
+</html>
